@@ -1,0 +1,115 @@
+[
+  {
+    "id": 1,
+    "name": "PM-KISAN",
+    "category": "Central Government",
+    "description": "Provides income support of ₹6000 per year to eligible farmer families.",
+    "benefits": [
+      "₹6000 per year",
+      "Direct Bank Transfer",
+      "Financial Support"
+    ],
+    "eligibility": "Small and Marginal Farmers",
+    "documents": [
+      "Aadhaar Card",
+      "Bank Passbook",
+      "Land Records"
+    ],
+    "website": "https://pmkisan.gov.in"
+  },
+  {
+    "id": 2,
+    "name": "PM Fasal Bima Yojana",
+    "category": "Central Government",
+    "description": "Crop insurance scheme protecting farmers against crop loss.",
+    "benefits": [
+      "Insurance Coverage",
+      "Natural Disaster Protection"
+    ],
+    "eligibility": "All Farmers",
+    "documents": [
+      "Aadhaar Card",
+      "Bank Account",
+      "Land Records"
+    ],
+    "website": "https://pmfby.gov.in"
+  },
+  {
+    "id": 3,
+    "name": "Kisan Credit Card",
+    "category": "Central Government",
+    "description": "Provides affordable agricultural loans to farmers.",
+    "benefits": [
+      "Low Interest Loan",
+      "Easy Credit"
+    ],
+    "eligibility": "Farmers",
+    "documents": [
+      "Aadhaar Card",
+      "PAN Card",
+      "Land Records"
+    ],
+    "website": "https://www.myscheme.gov.in"
+  },
+  {
+    "id": 4,
+    "name": "Soil Health Card",
+    "category": "Central Government",
+    "description": "Provides soil testing reports and nutrient recommendations.",
+    "benefits": [
+      "Free Soil Testing",
+      "Nutrient Report"
+    ],
+    "eligibility": "All Farmers",
+    "documents": [
+      "Aadhaar Card"
+    ],
+    "website": "https://soilhealth.dac.gov.in"
+  },
+  {
+    "id": 5,
+    "name": "eNAM",
+    "category": "Central Government",
+    "description": "Online agricultural marketing platform.",
+    "benefits": [
+      "Better Market Prices",
+      "Online Trading"
+    ],
+    "eligibility": "Registered Farmers",
+    "documents": [
+      "Aadhaar Card"
+    ],
+    "website": "https://enam.gov.in"
+  },
+  {
+    "id": 6,
+    "name": "PM Krishi Sinchai Yojana",
+    "category": "Central Government",
+    "description": "Improves irrigation facilities for farmers.",
+    "benefits": [
+      "Efficient Irrigation",
+      "Water Conservation"
+    ],
+    "eligibility": "Farmers",
+    "documents": [
+      "Aadhaar Card",
+      "Land Records"
+    ],
+    "website": "https://pmksy.gov.in"
+  },
+  {
+    "id": 7,
+    "name": "National Horticulture Mission",
+    "category": "Central Government",
+    "description": "Supports horticulture development in India.",
+    "benefits": [
+      "Subsidy",
+      "Training"
+    ],
+    "eligibility": "Farmers",
+    "documents": [
+      "Aadhaar Card"
+    ],
+    "website": "https://nhb.gov.in"
+  }
+]

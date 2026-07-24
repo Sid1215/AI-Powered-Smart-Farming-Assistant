@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/weather-icons.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        h1 {
+            margin-top: 20px;
+            color: #007bff;
+        }
+        table {
+            margin-top: 20px;
+            font-family: Arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+        .weather-icon {
+            display: flex;
+            align-items: center;
+        }
+        .weather-icon i {
+            width: 50px;
+            height: 50px;
+            background-size: cover;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Weather App</h1>
+        <form id="weather-form" class="form-inline justify-content-center mt-4" action="/forecast" method="get">
+            <div class="form-group mx-sm-3 mb-2">
+                <label for="city" class="sr-only">City</label>
+                <input type="text" class="form-control" id="city" name="city" placeholder="Enter city">
+            </div>
+            <button type="submit" class="btn btn-primary mb-2">Get Forecast</button>
+            <button type="button" class="btn btn-secondary mb-2 ml-2" onclick="getLocation()">Use Current Location</button>
+            <input type="hidden" id="lat" name="lat">
+            <input type="hidden" id="lon" name="lon">
+        </form>
+        <table class="table table-striped table-bordered mt-4">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Time</th>
+                    <th>Temperature</th>
+                    <th>Humidity</th>
+                    <th>Weather</th>
+                    <th>Wind</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if data %}
+                    {% for item in data["list"] %}
+                        <tr>
+                            <td>{{ item["dt_txt"] }}</td>
+                            <td>{{ item["main"]["temp"] }}°C</td>
+                            <td>{{ item["main"]["humidity"] }}%</td>
+                            <td>
+                                <div class="weather-icon">
+                                    <i class="wu wu-white {{ get_icon_class(item["weather"][0]["icon"]) }}"></i>
+                                    {{ item["weather"][0]["main"] }}
+                                </div>
+                            </td>
+                            <td>{{ '%.2f' % (item["wind"]["speed"]*3.6) }} km/h ({{ item["wind"]["deg"] }}&deg;)</td>
+                        </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td colspan="5" class="text-center">No data available</td>
+                    </tr>
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+    <script>
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else {
+                alert("Geolocation is not supported by this browser.");
+            }
+        }
+
+        function showPosition(position) {
+            document.getElementById('lat').value = position.coords.latitude;
+            document.getElementById('lon').value = position.coords.longitude;
+            document.getElementById('weather-form').submit();
+        }
+    </script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>

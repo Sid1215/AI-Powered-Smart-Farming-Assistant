@@ -1,0 +1,78 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{ scheme.name }} | FarmBuddy</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+body{background:#f4f8f2;color:#333}
+header{background:#2e7d32;color:#fff;padding:24px;text-align:center}
+.container{max-width:900px;margin:30px auto;padding:20px}
+.card{background:#fff;padding:30px;border-radius:16px;box-shadow:0 8px 18px rgba(0,0,0,.08)}
+.badge{display:inline-block;background:#e8f5e9;color:#2e7d32;padding:6px 12px;border-radius:20px;font-size:13px;margin-bottom:15px}
+h2{margin-bottom:10px}
+.section{margin-top:25px}
+.section h3{color:#2e7d32;margin-bottom:10px}
+ul{padding-left:22px}
+li{margin-bottom:8px}
+.actions{margin-top:30px;display:flex;gap:15px;flex-wrap:wrap}
+.btn{display:inline-block;text-decoration:none;padding:12px 18px;border-radius:8px;font-weight:bold}
+.primary{background:#2e7d32;color:#fff}
+.secondary{background:#eceff1;color:#333}
+footer{text-align:center;padding:20px;color:#666}
+</style>
+</head>
+<body>
+
+<header>
+<h1>🏛 Government Scheme Details</h1>
+</header>
+
+<div class="container">
+<div class="card">
+
+<span class="badge">{{ scheme.category }}</span>
+
+<h2>{{ scheme.name }}</h2>
+
+<p>{{ scheme.description }}</p>
+
+<div class="section">
+<h3>✅ Benefits</h3>
+<ul>
+{% for benefit in scheme.benefits %}
+<li>{{ benefit }}</li>
+{% endfor %}
+</ul>
+</div>
+
+<div class="section">
+<h3>👨‍🌾 Eligibility</h3>
+<p>{{ scheme.eligibility }}</p>
+</div>
+
+<div class="section">
+<h3>📄 Required Documents</h3>
+<ul>
+{% for doc in scheme.documents %}
+<li>{{ doc }}</li>
+{% endfor %}
+</ul>
+</div>
+
+<div class="actions">
+<a class="btn primary" href="{{ scheme.website }}" target="_blank">Visit Official Website</a>
+<a class="btn secondary" href="{{ url_for('government_schemes') }}">← Back to Schemes</a>
+</div>
+
+</div>
+</div>
+
+<footer>
+© 2026 FarmBuddy | AI Powered Smart Farming Assistant
+</footer>
+
+</body>
+</html>

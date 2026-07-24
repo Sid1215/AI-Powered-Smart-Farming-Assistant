@@ -1,0 +1,49 @@
+<htm>
+    <title>
+
+    </title>
+    <head>
+        <style>
+               .card
+        {
+            height:300px;
+            width:300px;
+            background-color:rgb(250, 245, 245);
+            margin-top: 50px;
+            float:left;
+            margin-left:50px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            border-radius:4px;
+        }
+        .outer{
+            width:100%;
+            height:auto;
+            background-color: blue;
+        }
+        </style>
+    </head>
+    <body>
+        <div>
+            {% include 'header.html' %} <br>
+        </div>
+    <div class="outer">
+        {% for fertilizer in fertilizers %}
+        <div class="card">
+        <img src="{{ fertilizer.photo_binary }}" alt="Product Photo" style="max-width: 100%;"><br>
+        <strong>Name:</strong> {{ fertilizer.name }}<br>
+        <strong>Price:</strong> ${{fertilizer.price }}<br>
+        <strong>Brand:</strong> {{ fertilizer.brand }}<br>
+        <strong>Weight:</strong> {{ fertilizer.weight }} lbs<br>
+        <strong>Form:</strong> {{ fertilizer.form }}<br>
+        <strong>Coverage:</strong> {{ fertilizer.coverage }}<br>
+        <strong>Users:</strong> {{ fertilizer.users }}<br>
+        <strong>About:</strong> {{ fertilizer.about }}<br>
+        </div>
+    
+        </div>
+  
+    </div>
+    {% endfor %}
+        </div>
+    </body>
+</htm>

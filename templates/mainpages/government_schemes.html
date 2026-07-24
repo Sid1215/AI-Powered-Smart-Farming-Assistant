@@ -1,0 +1,63 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Government Schemes | FarmBuddy</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+body{background:#f4f8f2;color:#333}
+header{background:#2e7d32;color:#fff;padding:22px;text-align:center}
+.container{max-width:1200px;margin:auto;padding:30px}
+.search-box{margin-bottom:25px}
+.search-box input{width:100%;padding:14px;border:1px solid #ccc;border-radius:10px;font-size:16px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
+.card{background:#fff;border-radius:16px;padding:20px;box-shadow:0 8px 18px rgba(0,0,0,.08);transition:.3s}
+.card:hover{transform:translateY(-6px)}
+.badge{display:inline-block;background:#e8f5e9;color:#2e7d32;padding:5px 10px;border-radius:20px;font-size:13px;margin-bottom:10px}
+.card h3{margin:10px 0}
+.card p{color:#666;line-height:1.5;margin-bottom:15px}
+.btn{display:inline-block;background:#2e7d32;color:#fff;text-decoration:none;padding:10px 18px;border-radius:8px}
+footer{text-align:center;padding:20px;color:#666}
+</style>
+</head>
+<body>
+
+<header>
+<h1>🏛 Government Schemes</h1>
+<p>Explore Central Government Schemes for Farmers</p>
+</header>
+
+<div class="container">
+<div class="search-box">
+<input type="text" id="searchInput" placeholder="Search schemes...">
+</div>
+
+<div class="grid" id="schemeGrid">
+{% for scheme in schemes %}
+<div class="card">
+<span class="badge">{{ scheme.category }}</span>
+<h3>{{ scheme.name }}</h3>
+<p>{{ scheme.description }}</p>
+<a class="btn" href="{{ url_for('scheme_details', scheme_id=scheme.id) }}">View Details</a>
+</div>
+{% endfor %}
+</div>
+</div>
+
+<footer>
+© 2026 FarmBuddy | AI Powered Smart Farming Assistant
+</footer>
+
+<script>
+document.getElementById("searchInput").addEventListener("keyup",function(){
+const filter=this.value.toLowerCase();
+document.querySelectorAll(".card").forEach(card=>{
+card.style.display=card.innerText.toLowerCase().includes(filter)?"block":"none";
+});
+});
+</script>
+
+</body>
+</html>

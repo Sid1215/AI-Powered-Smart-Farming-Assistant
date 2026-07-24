@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .card
+        {
+            height:300px;
+            width:300px;
+            background-color:rgb(250, 245, 245);
+            margin-top: 50px;
+            float:left;
+            margin-left:50px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            border-radius:4px;
+        }
+        .outer{
+            width:100%;
+            height:auto;
+            background-color: blue;
+        }
+    </style>
+    <title>Animal Data</title>
+</head>
+<body>
+    <div>
+        {% include 'header.html' %} <br>
+    </div>
+    <div class="outer">
+        {% for grain in grains %}
+        <div class="card">
+            <img src="{{ grain .photo_binary }}" alt:"Product Photo" style="max-width: 100%;"><br>
+            <strong>Grain Name:</strong> {{ grain .grain_name }}<br>
+            <strong>Color:</strong> {{ grain .brand }}<br>
+            <strong>Price:</strong> ${{ grain .price }}<br>
+            <strong>Weight:</strong> {{ grain .weight }} lbs<br>
+            <strong>Description:</strong> {{ grain.description }}<br>
+            <strong>Number of item :</strong> {{ grain . number_of_item }} lbs<br>
+            <strong>Location:</strong> {{ grain .location }}<br>
+            <strong>Net Quantity:</strong> {{ grain.net_quantity }}<br>
+            <strong>Contact:</strong> {{ grain .contact }}<br>
+        </div>
+    {% endfor %}
+    </div>
+
+</body>
+</html>

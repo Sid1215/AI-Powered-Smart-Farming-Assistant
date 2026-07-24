@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>FarmBuddy AI</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#f4f8f4;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+.container{
+    width:90%;
+    max-width:700px;
+    background:#fff;
+    border-radius:18px;
+    padding:35px;
+    box-shadow:0 15px 40px rgba(0,0,0,.12);
+}
+
+h1{
+    text-align:center;
+    color:#2E7D32;
+    margin-bottom:8px;
+    font-size:32px;
+}
+
+p{
+    text-align:center;
+    color:#666;
+    margin-bottom:30px;
+}
+
+.input-area{
+    display:flex;
+    gap:12px;
+}
+
+input{
+    flex:1;
+    height:55px;
+    border:1px solid #dcdcdc;
+    border-radius:12px;
+    padding:0 18px;
+    font-size:16px;
+    outline:none;
+    transition:.3s;
+}
+
+input:focus{
+    border-color:#2E7D32;
+    box-shadow:0 0 0 4px rgba(46,125,50,.12);
+}
+
+button{
+    background:#2E7D32;
+    color:white;
+    border:none;
+    border-radius:12px;
+    padding:0 26px;
+    font-size:16px;
+    font-weight:600;
+    cursor:pointer;
+    transition:.3s;
+}
+
+button:hover{
+    background:#1B5E20;
+}
+
+#generatedContentBox{
+    margin-top:25px;
+    min-height:220px;
+    border:1px solid #e5e5e5;
+    border-radius:14px;
+    background:#fafafa;
+    padding:20px;
+    color:#333;
+    line-height:1.7;
+    overflow-y:auto;
+    white-space:pre-wrap;
+}
+
+.loading{
+    color:#2E7D32;
+    font-weight:600;
+}
+
+@media(max-width:650px){
+
+.input-area{
+    flex-direction:column;
+}
+
+button{
+    height:55px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>🌿 FarmBuddy AI</h1>
+    <p>Ask your agriculture related questions</p>
+
+    <div class="input-area">
+
+        <input
+            type="text"
+            id="questionInput"
+            placeholder="Ask something..."
+            onkeypress="if(event.key==='Enter'){generateContent();}"
+        >
+
+        <button onclick="generateContent()">
+            Ask
+        </button>
+
+    </div>
+
+    <div id="generatedContentBox">
+        Your answer will appear here...
+    </div>
+
+</div>
+
+<script>
+
+function generateContent(){
+
+    const question=document.getElementById("questionInput").value.trim();
+
+    if(question===""){
+        return;
+    }
+
+    document.getElementById("generatedContentBox").innerHTML=
+        "<div class='loading'>Generating response...</div>";
+
+    fetch('/generate_content',{
+
+        method:'POST',
+
+        headers:{
+            'Content-Type':'application/json'
+        },
+
+        body:JSON.stringify({
+            question:question
+        })
+
+    })
+
+    .then(response=>response.text())
+
+    .then(data=>{
+
+        document.getElementById("generatedContentBox").innerHTML=data;
+
+    })
+
+    .catch(error=>{
+
+        document.getElementById("generatedContentBox").innerHTML=
+        "Something went wrong.";
+
+    });
+
+}
+
+</script>
+
+</body>
+</html>

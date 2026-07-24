@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"name": "Kisan_App",
+			"path": ".."
+		},
+		{
+			"path": "../../../Desktop/Farmbuddy"
+		}
+	],
+	"settings": {
+		"python-envs.defaultEnvManager": "ms-python.python:system"
+	}
+}
