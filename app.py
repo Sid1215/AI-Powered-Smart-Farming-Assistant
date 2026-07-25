@@ -491,7 +491,7 @@ def scheme_details(scheme_id):
 @app.route("/mainpages/government_schemes")
 def government_schemes():
 
-    with open("data/government_schemes.json", "r") as file:
+    with open("Data/government_schemes.json", "r") as file:
         schemes = json.load(file)
 
     return render_template(
