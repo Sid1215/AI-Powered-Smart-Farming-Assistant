@@ -472,7 +472,7 @@ def generate_content():
 @app.route("/scheme/<int:scheme_id>")
 def scheme_details(scheme_id):
 
-    with open("data/government_schemes.json", "r") as file:
+    with open("Data/government_schemes.json", "r") as file:
         schemes = json.load(file)
 
     scheme = next(
